@@ -451,3 +451,14 @@ html,body{ max-width: 100%; overflow-x:hidden; }
     padding: 12px 14px;
   }
 }
+@media (max-width: 768px){
+  #contato .container,
+  #contato .contact,
+  #contato .contact__grid,
+  #contato .contact-grid{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px;
+    align-items: start;
+  }
+}
