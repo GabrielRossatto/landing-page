@@ -439,8 +439,8 @@ html,body{ overflow-x:hidden; }
     display: none;
   }
 
-  .nav__links.is-open ~ .hero{
-    padding-top: 170px; /* ajuste fino: 140-220 */
+  .hero {
+    padding-top: 220px;
   }
 }
 
