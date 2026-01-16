@@ -22,7 +22,7 @@ html,body{ max-width: 100%; overflow-x:hidden; }
 .mt-12{ margin-top:12px; }
 .mt-16{ margin-top:16px; color: #fff; }
 .mt-24{ margin-top:24px; }
-.mt-48{ margin-top:48px; }
+.mt-48{ margin-top:48px; color: #fff; }
 
 /* ============ NAV ============ */
 .nav{
@@ -543,6 +543,18 @@ html,body{ max-width: 100%; overflow-x:hidden; }
   }
   .form__grid .full{ grid-column: 1 / -1; }
   input, textarea{ width: 100%; max-width: 100%; }
+
+    .project .row{
+    gap: 8px;
+  }
+
+  .project .row .btn{
+    height: 44px;          /* menor que o CTA principal */
+    font-size: 0.95rem;
+    padding: 0 14px;
+    width: auto;           /* 👈 deixa de ser gigante */
+    justify-content: center;
+  }
 }
 
 
