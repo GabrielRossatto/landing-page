@@ -544,12 +544,12 @@ html,body{ max-width: 100%; overflow-x:hidden; }
   .form__grid .full{ grid-column: 1 / -1; }
   input, textarea{ width: 100%; max-width: 100%; }
 
-    .project .row{
+  .project .row{
     gap: 8px;
   }
 
   .project .row .btn{
-    height: 44px;          /* menor que o CTA principal */
+    height: 20px;          /* menor que o CTA principal */
     font-size: 0.95rem;
     padding: 0 14px;
     width: auto;           /* 👈 deixa de ser gigante */
