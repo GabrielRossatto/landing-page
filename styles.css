@@ -545,15 +545,62 @@ html,body{ max-width: 100%; overflow-x:hidden; }
   input, textarea{ width: 100%; max-width: 100%; }
 
   .project .row{
-    gap: 8px;
+    flex-direction: row;      /* volta a ficar lado a lado */
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
   }
 
   .project .row .btn{
-    height: 20px;          /* menor que o CTA principal */
-    font-size: 0.95rem;
+    width: auto !important;   /* <-- mata o 100% */
+    flex: 0 1 auto;
+    height: 44px;
     padding: 0 14px;
-    width: auto;           /* 👈 deixa de ser gigante */
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+   .footer{
+    padding: 40px 0;
+  }
+
+  .footer__grid{
+    grid-template-columns: 1fr;
+    gap: 22px;
+    align-items: start;
+  }
+
+  /* bloco de marca */
+  .footer__brand{
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  /* links em "lista" com clique fácil */
+  .footer__links{
+    display: grid;
+    gap: 12px;
+  }
+
+  .footer__links a{
+    padding: 10px 0;
+    border-radius: 10px;
+  }
+
+  /* CTA vira bloco, e tudo com respiro */
+  .footer__cta{
+    justify-items: start;   /* no mobile fica melhor que end */
+    gap: 12px;
+  }
+
+  .footer__cta .btn{
+    width: 100%;
     justify-content: center;
+  }
+
+  .footer__cta small{
+    line-height: 1.4;
   }
 }
 
@@ -587,4 +634,20 @@ html,body{ max-width: 100%; overflow-x:hidden; }
 
   /* cards mais compactos */
   .card{ padding: 16px; }
+
+    .footer{
+    padding: 34px 0;
+  }
+
+  .footer__grid{
+    gap: 18px;
+  }
+
+  .footer__links a{
+    padding: 9px 0;
+  }
+
+  .footer__cta .btn{
+    height: 46px;
+  }
 }
