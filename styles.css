@@ -231,6 +231,7 @@ html,body{ max-width: 100%; overflow-x:hidden; }
   border: 1px solid rgba(0,0,0,.15);
 }
 .project__body{ padding: 18px; }
+ .project__body h3 {color: #fff}
 .project__body p{ color: var(--muted); margin-top: 10px; line-height: 1.55; }
 .row{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
 
@@ -246,7 +247,9 @@ html,body{ max-width: 100%; overflow-x:hidden; }
   align-items:center;
   justify-content:space-between;
   gap: 18px;
+  color: white;
 }
+
 
 /* ============ DEPOIMENTOS ============ */
 .quote{
@@ -353,16 +356,66 @@ html,body{ max-width: 100%; overflow-x:hidden; }
 .footer__cta{ display:grid; gap: 10px; justify-items:end; }
 
 /* ============ RESPONSIVO ============ */
+/* =========================
+   <= 1024px (tablet/pequeno desktop)
+========================= */
 @media (max-width: 1024px){
+  .grid{ gap: 16px; }
+
   .grid--4{ grid-template-columns: repeat(2, 1fr); }
   .grid--3{ grid-template-columns: repeat(2, 1fr); }
-  .hero__grid{ grid-template-columns: 1fr 1fr; }
+
+  .hero__grid{ grid-template-columns: 1fr; gap: 24px; }
   .brand__logo{ height: 64px; }
+
+  /* cards mais estáveis */
+  .card{ padding: 20px; border-radius: 16px; }
+  .project{ border-radius: 16px; overflow: hidden; }
+
+  /* botões em projetos: ainda podem ficar lado a lado aqui */
+  .row{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* evita quebrar feio */
+  }
+  .row .btn{
+    flex: 1 1 220px; /* impede ficar minúsculo */
+  }
+
+  /* contato: pode manter 2 colunas no tablet, mas sem estourar */
+  .contact{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .card p,
+  .project__body p,
+  .mini p{
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
 }
 
+
+/* =========================
+   <= 768px (mobile)
+========================= */
 @media (max-width: 768px){
 
-  /* navbar continua normal */
+  /* anti-scroll horizontal */
+  html, body{ overflow-x: hidden; max-width: 100%; }
+  *, *::before, *::after{ box-sizing: border-box; }
+
+  .grid{ gap: 14px; }
+  .grid--4, .grid--3{ grid-template-columns: 1fr; }
+
+  /* HERO */
+  .hero{ min-height: calc(100vh - 72px); }
+  .hero__grid{ grid-template-columns: 1fr; gap: 22px; padding: 22px 0; }
+
+  /* NAV + MENU FULLSCREEN */
   .nav{
     position: relative;
     height: 72px;
@@ -380,42 +433,32 @@ html,body{ max-width: 100%; overflow-x:hidden; }
     width: 44px;
     height: 44px;
     font-size: 1.4rem;
-    z-index: 200; /* fica acima do overlay */
+    z-index: 200;
   }
 
-  /* some o CTA do header no mobile */
-  .btn--pill{
-    display: none;
-  }
+  .btn--pill{ display: none; } /* CTA do header some no mobile */
+  .nav__links{ display: none; }
 
-  /* menu fechado */
-  .nav__links{
-    display: none;
-  }
-
-  /* menu aberto: full-screen */
   .nav__links.is-open{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 18px;
+    gap: 16px;
 
     position: fixed;
     inset: 0;
     z-index: 150;
 
-    padding: 110px 18px 40px; /* espaço pro topo */
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+
+    padding: 100px 16px 40px;
     background: rgba(10,10,12,0.96);
     backdrop-filter: blur(10px);
-
-    /* animação suave */
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity .18s ease, transform .18s ease;
   }
 
-  /* garante que o ul não fique com estilo zoado */
   .nav__links.is-open li{
     list-style: none;
     width: 100%;
@@ -429,36 +472,107 @@ html,body{ max-width: 100%; overflow-x:hidden; }
     padding: 14px 16px;
     border-radius: 14px;
 
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 600;
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
   }
 
-  .nav__links.is-open a:hover{
-    background: rgba(255,255,255,0.08);
-  }
-}
+  /* CARDS / PROJETOS */
+  .card, .project{ width: 100%; max-width: 100%; border-radius: 16px; }
+  .card{ padding: 18px; }
 
-@media (max-width: 420px){
-  .nav__links.is-open{
-    padding-top: 96px;
+  .project__media img{
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .badge{
+    max-width: calc(100% - 16px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .card p,
+  .project__body p,
+  .mini p{
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* botões dos projetos empilhados */
+  .row{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .row .btn{
+    width: 100%;
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  /* strip empilhado */
+  .strip{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     gap: 14px;
   }
-
-  .nav__links.is-open a{
-    font-size: 1.1rem;
-    padding: 12px 14px;
+  .strip .btn{
+    width: 100%;
+    justify-content: center;
   }
-}
-@media (max-width: 768px){
-  #contato .container,
-  #contato .contact,
-  #contato .contact__grid,
-  #contato .contact-grid{
-    display: grid !important;
-    grid-template-columns: 1fr !important;
+
+  /* contato: card + form em coluna */
+  .contact{
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 18px;
     align-items: start;
   }
+
+  /* form: 1 coluna no mobile */
+  .form__grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .form__grid .full{ grid-column: 1 / -1; }
+  input, textarea{ width: 100%; max-width: 100%; }
+}
+
+
+/* =========================
+   <= 420px (mobile pequeno)
+========================= */
+@media (max-width: 420px){
+
+  .nav{ padding: 0 12px; }
+  .brand__logo{ height: 52px; }
+  .nav__toggle{ width: 40px; height: 40px; font-size: 1.25rem; }
+
+  /* menu: menos padding e itens menores */
+  .nav__links.is-open{
+    padding: 90px 12px 32px;
+    gap: 12px;
+  }
+
+  .nav__links.is-open li{ max-width: 320px; }
+
+  .nav__links.is-open a{
+    font-size: 1.05rem;
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+
+  /* hero tipografia e botões */
+  .hero__text p{ font-size: 1rem; }
+  .btn{ height: 46px; }
+
+  /* cards mais compactos */
+  .card{ padding: 16px; }
 }
